@@ -1,11 +1,9 @@
 import './App.css';
 import React from 'react'
-import Scroll from './navTopScroll/navBgScroll'
+import Router from './router';
 function App() {
   return (
-    <div className="App">  xs
-       < Scroll/>
-    </div>
+        <Router />
   );
 }
 

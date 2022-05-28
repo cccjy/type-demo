@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="600" style="background-color:#2ece29"></canvas>
+    <script type="text/javascript">
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      let opt = {
+        x: 50,
+        y: 50,
+        size: 20, // 小球半径给20
+        dx: 5, 
+        dy:2//向y轴移动的速度用dy表示，可以表示速度
+      };
+      // 绘制小球的函数
+      function drawCilce() {
+        /// 打断小球连续滚动
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.fillStyle = "pink";
+        context.arc(opt.x, opt.y, opt.size, 0, 2 * Math.PI);
+        // 渲染 出来
+        context.fill();
+        context.closePath();
+      }
+      function update() {
+        drawCilce();
+        // 小球y轴移动
+        opt.y += opt.dy;
+        // 让小球上下来回滚动
+        if (opt.y + opt.size > canvas.height || opt.y - opt.size < 0) {
+          opt.dy *= -1;
+        }
+        requestAnimationFrame(update);
+      }
+      update();
+    </script>
+  </body>
+</html>
